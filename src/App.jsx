@@ -1,13 +1,12 @@
 import { useState } from 'react'
+import { useAgoraParams } from './hooks/useAgoraParams';
 import { VideoCallInterface } from './components/VideoCallInterface';
 
-
 function App() {
+  const config = useAgoraParams();
   return (
     <>
-      <div>
-        <VideoCallInterface />
-      </div>
+      <VideoCallInterface agoraConfig={config} />
     </>
   )
 }
