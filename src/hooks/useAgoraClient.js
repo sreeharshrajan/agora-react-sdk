@@ -6,6 +6,7 @@ export const useAgoraClient = (config) => {
   const [client] = useState(createAgoraClient());
   const [localTracks, setLocalTracks] = useState({ audioTrack: null, videoTrack: null });
   const [users, setUsers] = useState([]);
+  const [userType, setUserType] = useState([]);
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(true);
 
@@ -14,8 +15,9 @@ export const useAgoraClient = (config) => {
   useEffect(() => {
     const init = async () => {
       try {
-        const { appId, channel, token, uid } = config;
+        const { appId, channel, token, uid,type } = config;
         await client.join(appId, channel, token, uid);
+        setUserType(type);
         const [audioTrack, videoTrack] = await AgoraRTC.createMicrophoneAndCameraTracks();
         setLocalTracks({ audioTrack, videoTrack });
         await client.publish([audioTrack, videoTrack]);
@@ -102,6 +104,7 @@ export const useAgoraClient = (config) => {
     videoEnabled,
     toggleAudio,
     toggleVideo,
-    endCall
+    endCall,
+    userType
   };
 };

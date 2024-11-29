@@ -9,6 +9,7 @@ export const useAgoraParams = () => {
     const channel = params.get('channel');
     const token = params.get('token');
     const uid = params.get('uid');
+    const type = params.get('type');
 
     if (appId && channel && uid) {
       setConfig({
@@ -16,6 +17,7 @@ export const useAgoraParams = () => {
         channel,
         token,
         uid: parseInt(uid, 10),
+        type
       });
     }
   }, []);

@@ -5,7 +5,7 @@ import { useAgoraClient } from '../hooks/useAgoraClient';
 
 
 export const VideoCallInterface = ({ agoraConfig }) => {
-  const { localTracks, users, audioEnabled, videoEnabled, toggleAudio, toggleVideo, endCall } = useAgoraClient(agoraConfig);
+  const { localTracks, users, audioEnabled, videoEnabled, toggleAudio, toggleVideo, endCall, userType } = useAgoraClient(agoraConfig);
 
   const handleEndCall = async () => {
     // alert('Call ended');
@@ -17,7 +17,7 @@ export const VideoCallInterface = ({ agoraConfig }) => {
   return (
     <div className="relative h-screen w-full bg-gray-900 overflow-hidden">
       <div className="flex-grow h-full">
-        <VideoGrid localTracks={localTracks} users={users} />
+        <VideoGrid localTracks={localTracks} users={users} userType={userType} />
       </div>
       <div className="h-20 flex items-center justify-center bg-black/80">
         <VideoControls audioEnabled={audioEnabled}

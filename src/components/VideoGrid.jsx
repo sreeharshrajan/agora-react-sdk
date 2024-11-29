@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import { VideoPlayer } from './VideoPlayer';
 import { VideoPlaceholder } from './VideoPlaceholder';
 
-export const VideoGrid = ({ localTracks, users }) => {
-  const [isConnected, setIsConnected] = useState(true);
-  const [userIsConnected, setUserIsConnected] = useState(false);
-
+export const VideoGrid = ({ localTracks, users, userType }) => {
   const remoteUser = users[0]; // Show only the first remote user
 
   return (
@@ -17,16 +14,17 @@ export const VideoGrid = ({ localTracks, users }) => {
             videoTrack={remoteUser.videoTrack}
             userName={`User ${remoteUser.uid}`}
             isRemoteUser={true}
+            userType={userType}
           />
         ) : (
-          <VideoPlaceholder userName="Waiting for participant..." isRemoteUser={true} />
+            <VideoPlaceholder userName={`Waiting for ${userType === 'patient' ? 'doctor' : 'patient'} to join..`} isRemoteUser={true} userType={userType} />
         )}
 
         {/* Local user's video */}
         {localTracks.videoTrack ? (
-          <VideoPlayer isRemoteUser={false} videoTrack={localTracks.videoTrack} userName="You" />
+          <VideoPlayer isRemoteUser={false} videoTrack={localTracks.videoTrack} userName="You" userType={userType} />
         ) : (
-          <VideoPlaceholder isRemoteUser={false} userName="You" />
+          <VideoPlaceholder isRemoteUser={false} userName="You" userType={userType} />
         )}
 
       </div>

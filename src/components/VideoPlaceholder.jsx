@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserCircle2 } from 'lucide-react';
 
-export const VideoPlaceholder = ({ isRemoteUser, userName, status }) => {
+export const VideoPlaceholder = ({ isRemoteUser, userName, status, userType }) => {
   return (
     <div
       className={`relative w-full rounded-lg overflow-hidden bg-gray-800 flex flex-col items-center justify-center ${isRemoteUser ? 'sm:col-span-2 sm:h-full h-[50vh] order-2 sm:order-none' : 'sm:h-[50%] h-[30vh]'}`}>

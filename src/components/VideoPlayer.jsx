@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export const VideoPlayer = ({ isRemoteUser, videoTrack, userName }) => {
+export const VideoPlayer = ({ isRemoteUser, videoTrack, userName, userType }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
