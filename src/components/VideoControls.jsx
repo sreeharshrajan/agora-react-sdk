@@ -8,8 +8,6 @@ export const VideoControls = ({
   onToggleVideo,
   onEndCall,
 }) => {
-
-
   return (
     <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-20 bg-gray-800 flex items-center justify-center gap-4 sm:gap-8 px-4">
       {/* Toggle Audio button */}

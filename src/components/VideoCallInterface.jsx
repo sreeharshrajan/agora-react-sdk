@@ -8,7 +8,9 @@ export const VideoCallInterface = ({ agoraConfig }) => {
   const { localTracks, users, audioEnabled, videoEnabled, toggleAudio, toggleVideo, endCall } = useAgoraClient(agoraConfig);
 
   const handleEndCall = async () => {
+    // alert('Call ended');
     await endCall();
+    // fetch('http://localhost:8000/end-consult-call', { method: 'POST' }).then(res => res.json()).then(data => console.log(data));
     onEndCall();
   };
 
